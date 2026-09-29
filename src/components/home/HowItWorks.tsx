@@ -1,21 +1,23 @@
-import { Building2, ClipboardList, PhoneCall, Send, UserCheck } from "lucide-react";
+import { ClipboardList, PhoneCall, Send, UserCheck, Wallet } from "lucide-react";
+import { FadeIn } from "@/components/motion/FadeIn";
+import { RoadLine } from "@/components/ui/RoadLine";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 
 const companySteps = [
   {
     icon: ClipboardList,
     title: "Tell us what you need",
-    text: "Share driver type, location, start date and how many drivers you need.",
+    text: "Depot location, driver type, start date and how many you need.",
   },
   {
     icon: UserCheck,
-    title: "We send screened drivers",
-    text: "Pre-screened candidates with licence and right-to-work checks where required.",
+    title: "We send screened drivers fast",
+    text: "Licence, right to work and experience checked before you meet anyone.",
   },
   {
-    icon: Building2,
+    icon: Wallet,
     title: "Pay only when they start",
-    text: "No upfront fees — you only pay when the driver starts work with you.",
+    text: "No upfront fees — you pay when the driver starts work with you.",
   },
 ];
 
@@ -23,72 +25,75 @@ const driverSteps = [
   {
     icon: Send,
     title: "Apply in 2 minutes",
-    text: "Quick online form — tell us your licence, experience and availability.",
+    text: "Short form on your phone — licence, experience and availability.",
   },
   {
     icon: PhoneCall,
-    title: "Quick call with us",
-    text: "We confirm details and discuss suitable roles across the UK.",
+    title: "Quick call with our team",
+    text: "We confirm details and discuss suitable van and courier roles.",
   },
   {
     icon: UserCheck,
     title: "Start your new job",
-    text: "We match you with companies that fit your skills and location.",
+    text: "We match you with delivery companies that fit your skills and area.",
   },
 ];
 
-function StepsGrid({
+function StepRow({
   steps,
-  prefix,
+  label,
 }: {
   steps: typeof companySteps;
-  prefix: string;
+  label: string;
 }) {
   return (
-    <ol className="grid gap-6 md:grid-cols-3">
-      {steps.map((step, index) => {
-        const Icon = step.icon;
-        return (
+    <div className="relative">
+      <div className="absolute left-0 right-0 top-[4.5rem] hidden md:block">
+        <RoadLine />
+      </div>
+      <ol className="relative grid gap-6 md:grid-cols-3">
+        {steps.map((step, index) => (
           <li
             key={step.title}
-            className="relative rounded-2xl bg-white p-6 shadow-card"
+            className="rounded-2xl border border-navy/8 bg-white p-6 shadow-card"
           >
-            <span className="text-xs font-bold uppercase tracking-wider text-mint">
-              Step {index + 1}
+            <span className="text-xs font-bold uppercase tracking-wider text-teal-dark">
+              {label} · Step {index + 1}
             </span>
-            <div className="mt-3 flex h-11 w-11 items-center justify-center rounded-xl bg-sky/30 text-slate-brand">
-              <Icon className="h-5 w-5" aria-hidden />
+            <div className="mt-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-sky-brand/40">
+              <step.icon className="h-6 w-6 text-navy" aria-hidden />
             </div>
-            <h3 className="mt-4 font-semibold text-slate-brand">{step.title}</h3>
-            <p className="mt-2 text-sm leading-relaxed text-slate-brand/75">
+            <h3 className="mt-4 font-bold text-navy">{step.title}</h3>
+            <p className="mt-2 text-sm leading-relaxed text-navy-muted">
               {step.text}
             </p>
-            <span className="sr-only">{prefix} step {index + 1}</span>
           </li>
-        );
-      })}
-    </ol>
+        ))}
+      </ol>
+    </div>
   );
 }
 
 export function HowItWorks() {
   return (
-    <section className="bg-white px-4 py-16 sm:px-6">
+    <section className="bg-white px-4 py-20 sm:px-6">
       <div className="mx-auto max-w-6xl space-y-20">
-        <div>
+        <FadeIn>
           <SectionHeading
-            title="How it works for companies"
-            subtitle="A straightforward way to fill driver vacancies without upfront recruitment fees."
+            eyebrow="For companies"
+            title="How it works"
+            subtitle="A clear path from request to a driver on your fleet."
           />
-          <StepsGrid steps={companySteps} prefix="Company" />
-        </div>
-        <div>
+          <StepRow steps={companySteps} label="Company" />
+        </FadeIn>
+        <FadeIn>
           <SectionHeading
-            title="How it works for drivers"
-            subtitle="Free to apply — we help you find van, courier and HGV work nationwide."
+            eyebrow="For drivers"
+            title="How it works"
+            subtitle="Free to apply — we help you find van and courier work nationwide."
           />
-          <StepsGrid steps={driverSteps} prefix="Driver" />
-        </div>
+          <StepRow steps={driverSteps} label="Driver" />
+        </FadeIn>
       </div>
     </section>
   );

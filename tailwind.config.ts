@@ -9,20 +9,43 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        mint: "#86D4C4",
-        sky: "#A3D2F7",
-        slate: {
-          brand: "#3F5669",
+        teal: {
+          DEFAULT: "#7ECFC7",
+          dark: "#5FA8A8",
+          light: "#A8E6E0",
         },
-        background: "#F8FAFC",
+        sky: {
+          brand: "#A3CDF8",
+        },
+        navy: {
+          DEFAULT: "#35495E",
+          muted: "#4A6278",
+        },
+        surface: "#F7FAFC",
       },
       fontFamily: {
-        heading: ["var(--font-poppins)", "sans-serif"],
+        heading: ["var(--font-jakarta)", "sans-serif"],
         body: ["var(--font-inter)", "sans-serif"],
       },
       boxShadow: {
-        soft: "0 4px 24px -4px rgba(63, 86, 105, 0.08)",
-        card: "0 2px 16px -2px rgba(63, 86, 105, 0.06)",
+        soft: "0 8px 32px -8px rgba(53, 73, 94, 0.12)",
+        card: "0 2px 12px -2px rgba(53, 73, 94, 0.08)",
+        lift: "0 16px 48px -12px rgba(53, 73, 94, 0.15)",
+      },
+      backgroundImage: {
+        "brand-gradient":
+          "linear-gradient(135deg, #7ECFC7 0%, #A3CDF8 100%)",
+        "hero-gradient":
+          "linear-gradient(160deg, rgba(126, 207, 199, 0.35) 0%, rgba(163, 205, 248, 0.25) 45%, #F7FAFC 85%)",
+      },
+      keyframes: {
+        "road-dash": {
+          "0%": { strokeDashoffset: "24" },
+          "100%": { strokeDashoffset: "0" },
+        },
+      },
+      animation: {
+        "road-dash": "road-dash 1.2s linear infinite",
       },
     },
   },

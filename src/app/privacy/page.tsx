@@ -1,11 +1,11 @@
 import Link from "next/link";
 import { PageHero } from "@/components/layout/PageHero";
-import { EMAIL, LEGAL_NAME, SITE_NAME } from "@/lib/constants";
+import { siteConfig } from "@/lib/site-config";
 import { pageMetadata } from "@/lib/metadata";
 
 export const metadata = pageMetadata(
   "Privacy Policy",
-  "Privacy policy for NFZ Recruitment — how we collect, use and protect personal data under UK GDPR.",
+  "Privacy policy for RoadWorthy Recruitment — UK GDPR information for drivers and companies.",
   "/privacy",
 );
 
@@ -16,139 +16,124 @@ export default function PrivacyPage() {
         title="Privacy Policy"
         description="How we handle personal data when you apply for work or request drivers."
       />
-      <article className="px-4 py-12 sm:px-6">
-        <div className="mx-auto max-w-3xl space-y-8 text-sm leading-relaxed text-slate-brand/90 sm:text-base">
-          <p className="text-slate-brand/70">
-            Last updated: {new Date().toLocaleDateString("en-GB", { month: "long", year: "numeric" })}
+      <article className="px-4 py-16 sm:px-6">
+        <div className="mx-auto max-w-3xl space-y-8 text-sm leading-relaxed text-navy-muted sm:text-base">
+          <p>
+            Last updated:{" "}
+            {new Date().toLocaleDateString("en-GB", {
+              month: "long",
+              year: "numeric",
+            })}
           </p>
 
           <section>
-            <h2 className="text-lg font-bold text-slate-brand">1. Who we are</h2>
+            <h2 className="text-lg font-bold text-navy">1. Who we are</h2>
             <p className="mt-2">
-              {SITE_NAME} ({LEGAL_NAME}) is a recruitment agency operating in the
-              United Kingdom. For data protection purposes, we are the data
-              controller for personal information collected through this website
-              and our recruitment services.
+              {siteConfig.brandName} ({siteConfig.companyLegalName}) is a
+              recruitment agency in the United Kingdom. We are the data controller
+              for personal information collected through this website and our
+              services.
             </p>
             <p className="mt-2">
               Contact:{" "}
-              <a href={`mailto:${EMAIL}`} className="text-slate-brand underline">
-                {EMAIL}
+              <a href={`mailto:${siteConfig.email}`} className="text-navy underline">
+                {siteConfig.email}
               </a>
             </p>
           </section>
 
           <section>
-            <h2 className="text-lg font-bold text-slate-brand">2. What data we collect</h2>
-            <p className="mt-2 font-medium text-slate-brand">From drivers (applicants)</p>
-            <ul className="mt-2 list-disc space-y-1 pl-5">
-              <li>Identity and contact details (name, phone, email, town/postcode)</li>
-              <li>Driving and employment-related information (licence category, experience, penalty points, CPC/tacho where relevant)</li>
-              <li>Right to work status and availability to start</li>
-              <li>Any additional information you provide in messages or calls</li>
-            </ul>
-            <p className="mt-4 font-medium text-slate-brand">From companies (clients)</p>
-            <ul className="mt-2 list-disc space-y-1 pl-5">
-              <li>Company and contact details (company name, contact name, phone, email, location)</li>
-              <li>Recruitment requirements (driver types, numbers needed, start dates, messages)</li>
-            </ul>
-            <p className="mt-4 font-medium text-slate-brand">From website visitors</p>
-            <ul className="mt-2 list-disc space-y-1 pl-5">
-              <li>Information submitted through contact forms</li>
-              <li>Technical data such as IP address and browser type may be processed by our hosting provider for security and performance</li>
-            </ul>
-          </section>
-
-          <section>
-            <h2 className="text-lg font-bold text-slate-brand">3. Why we use your data</h2>
-            <ul className="mt-2 list-disc space-y-1 pl-5">
-              <li>To assess driver applications and match candidates with suitable roles</li>
-              <li>To respond to company enquiries and supply drivers to client businesses</li>
-              <li>To communicate with you about recruitment opportunities or requests</li>
-              <li>To meet legal and regulatory obligations where applicable</li>
-            </ul>
-          </section>
-
-          <section>
-            <h2 className="text-lg font-bold text-slate-brand">4. Legal basis (UK GDPR)</h2>
-            <ul className="mt-2 list-disc space-y-1 pl-5">
-              <li>
-                <strong>Consent</strong> — where you tick the consent box on the driver application form
-              </li>
-              <li>
-                <strong>Legitimate interests</strong> — to operate our recruitment business, respond to enquiries, and place drivers with clients, balanced against your rights
-              </li>
-              <li>
-                <strong>Contract</strong> — where processing is necessary to take steps at your request before entering a contract
-              </li>
-              <li>
-                <strong>Legal obligation</strong> — where we must retain or disclose information to comply with law
-              </li>
-            </ul>
-          </section>
-
-          <section>
-            <h2 className="text-lg font-bold text-slate-brand">5. Who we share data with</h2>
+            <h2 className="text-lg font-bold text-navy">2. Data we collect</h2>
+            <p className="mt-2 font-semibold text-navy">Drivers</p>
             <p className="mt-2">
-              We do not sell your personal data. We share information only where needed for recruitment:
-            </p>
-            <ul className="mt-2 list-disc space-y-1 pl-5">
-              <li>
-                <strong>Client companies</strong> — relevant driver details are shared with prospective employers when we propose you for a role (with your knowledge as part of the recruitment process)
-              </li>
-              <li>
-                <strong>Service providers</strong> — such as website hosting, email/form delivery, and IT support, under appropriate contracts
-              </li>
-            </ul>
-          </section>
-
-          <section>
-            <h2 className="text-lg font-bold text-slate-brand">6. How long we keep data</h2>
-            <p className="mt-2">
-              We keep personal data only for as long as necessary for the purposes above. Driver application data is typically retained while you remain active in our recruitment pool and for a reasonable period afterwards (often up to 24 months unless a longer period is required for legal or business reasons). Company enquiry data is retained while the relationship is active and as needed for record-keeping. You may ask us to delete your data earlier where we are not required to keep it.
-            </p>
-          </section>
-
-          <section>
-            <h2 className="text-lg font-bold text-slate-brand">7. Your rights</h2>
-            <p className="mt-2">
-              Under UK data protection law you may have the right to access, rectify, erase, restrict, or object to processing of your personal data, and to data portability where applicable. You may withdraw consent at any time where processing is based on consent.
-            </p>
-            <p className="mt-2">
-              To exercise your rights, email{" "}
-              <a href={`mailto:${EMAIL}`} className="text-slate-brand underline">
-                {EMAIL}
-              </a>
-              . You also have the right to complain to the Information Commissioner&apos;s Office (ICO) at{" "}
+              Van driver applications are submitted through{" "}
               <a
-                href="https://ico.org.uk"
-                className="text-slate-brand underline"
+                href="https://tally.so"
+                className="text-navy underline"
                 target="_blank"
                 rel="noopener noreferrer"
               >
+                Tally
+              </a>{" "}
+              (tally.so), a third-party form provider embedded on our For Drivers
+              page. The fields in that form may include:
+            </p>
+            <ul className="mt-2 list-disc pl-5">
+              <li>Name, phone, email, town/postcode</li>
+              <li>Licence, experience, penalty points, van experience</li>
+              <li>Right to work, availability, preferred work patterns</li>
+            </ul>
+            <p className="mt-2">
+              Tally processes this data on our behalf to deliver submissions to
+              us. Tally&apos;s own privacy terms apply on their platform; we
+              receive the application content to assess and match you with roles.
+            </p>
+            <p className="mt-4 font-semibold text-navy">Companies</p>
+            <ul className="mt-2 list-disc pl-5">
+              <li>Company and contact details, depot location</li>
+              <li>Driver requirements, contract type, start dates</li>
+            </ul>
+          </section>
+
+          <section>
+            <h2 className="text-lg font-bold text-navy">3. Why we use data</h2>
+            <ul className="mt-2 list-disc pl-5">
+              <li>To assess applications and match drivers with roles</li>
+              <li>To respond to company requests and supply drivers</li>
+              <li>To communicate about recruitment</li>
+              <li>To meet legal obligations where applicable</li>
+            </ul>
+          </section>
+
+          <section>
+            <h2 className="text-lg font-bold text-navy">4. Legal basis</h2>
+            <ul className="mt-2 list-disc pl-5">
+              <li>Consent (driver application submitted via our Tally form)</li>
+              <li>Legitimate interests (running our recruitment business)</li>
+              <li>Contract (steps before entering an agreement)</li>
+              <li>Legal obligation where required</li>
+            </ul>
+          </section>
+
+          <section>
+            <h2 className="text-lg font-bold text-navy">5. Sharing</h2>
+            <p className="mt-2">
+              We do not sell personal data. We share relevant driver information
+              with client companies for job placement, and with service providers
+              (including Tally for driver applications, website hosting, company
+              and contact forms, and IT support) under appropriate terms.
+            </p>
+          </section>
+
+          <section>
+            <h2 className="text-lg font-bold text-navy">6. Retention</h2>
+            <p className="mt-2">
+              We keep data only as long as needed — typically while you remain
+              active in our pool and for a reasonable period afterwards (often up
+              to 24 months unless law requires longer). You may request earlier
+              deletion where we are not required to retain records.
+            </p>
+          </section>
+
+          <section>
+            <h2 className="text-lg font-bold text-navy">7. Your rights</h2>
+            <p className="mt-2">
+              You may have rights to access, rectify, erase, restrict or object to
+              processing, and to complain to the ICO (
+              <a href="https://ico.org.uk" className="underline" target="_blank" rel="noopener noreferrer">
                 ico.org.uk
+              </a>
+              ). To exercise rights or request deletion, email{" "}
+              <a href={`mailto:${siteConfig.email}`} className="underline">
+                {siteConfig.email}
               </a>
               .
             </p>
           </section>
 
-          <section>
-            <h2 className="text-lg font-bold text-slate-brand">8. Security</h2>
-            <p className="mt-2">
-              We use appropriate technical and organisational measures to protect personal data. No method of transmission over the internet is completely secure; please avoid sending sensitive documents unless we ask you to through a secure channel.
-            </p>
-          </section>
-
-          <section>
-            <h2 className="text-lg font-bold text-slate-brand">9. Changes</h2>
-            <p className="mt-2">
-              We may update this policy from time to time. The latest version will always be published on this page.
-            </p>
-          </section>
-
           <p>
             See also our{" "}
-            <Link href="/terms" className="font-medium text-slate-brand underline">
+            <Link href="/terms" className="font-semibold text-navy underline">
               Terms of Use
             </Link>
             .

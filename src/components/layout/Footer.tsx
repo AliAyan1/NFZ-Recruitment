@@ -1,17 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Mail, MapPin, Phone } from "lucide-react";
-import {
-  COMPANY_NUMBER,
-  EMAIL,
-  LEGAL_NAME,
-  PHONE_DISPLAY,
-  PHONE_TEL,
-  SITE_NAME,
-  WHATSAPP_URL,
-} from "@/lib/constants";
+import { siteConfig } from "@/lib/site-config";
 
-const footerLinks = [
+const links = [
   { href: "/companies", label: "For Companies" },
   { href: "/drivers", label: "For Drivers" },
   { href: "/about", label: "About" },
@@ -24,39 +16,38 @@ export function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="border-t border-slate-brand/10 bg-white">
-      <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6">
-        <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-3">
+    <footer className="border-t border-navy/8 bg-white">
+      <div className="mx-auto max-w-6xl px-4 py-14 sm:px-6">
+        <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-3">
           <div>
             <Image
-              src="/nfz-logo.png"
-              alt={SITE_NAME}
-              width={736}
-              height={215}
-              className="h-14 w-auto max-w-[240px] md:h-16 md:max-w-[280px]"
+              src="/roadworthy-logo.png"
+              alt={siteConfig.brandName}
+              width={994}
+              height={373}
+              className="h-12 w-auto max-w-[220px]"
             />
-            <p className="mt-4 max-w-sm text-sm leading-relaxed text-slate-brand/80">
-              We supply pre-screened, licence-checked drivers to UK delivery,
-              courier and logistics companies. Van, courier and HGV — nationwide.
+            <p className="mt-4 max-w-sm text-sm leading-relaxed text-navy-muted">
+              {siteConfig.tagline}
             </p>
-            <p className="mt-3 flex items-center gap-2 text-sm font-medium text-slate-brand">
-              <MapPin className="h-4 w-4 text-mint" aria-hidden />
-              Covering all of the UK
+            <p className="mt-4 flex items-center gap-2 text-sm font-semibold text-navy">
+              <MapPin className="h-4 w-4 text-teal-dark" aria-hidden />
+              {siteConfig.coverage}
             </p>
           </div>
 
           <div>
-            <h2 className="text-sm font-bold uppercase tracking-wide text-slate-brand">
+            <h2 className="text-xs font-bold uppercase tracking-wider text-navy">
               Quick links
             </h2>
-            <ul className="mt-4 space-y-2">
-              {footerLinks.map((link) => (
-                <li key={link.href}>
+            <ul className="mt-4 space-y-2.5">
+              {links.map((l) => (
+                <li key={l.href}>
                   <Link
-                    href={link.href}
-                    className="text-sm text-slate-brand/80 transition hover:text-slate-brand"
+                    href={l.href}
+                    className="text-sm text-navy-muted transition hover:text-navy"
                   >
-                    {link.label}
+                    {l.label}
                   </Link>
                 </li>
               ))}
@@ -64,48 +55,51 @@ export function Footer() {
           </div>
 
           <div>
-            <h2 className="text-sm font-bold uppercase tracking-wide text-slate-brand">
+            <h2 className="text-xs font-bold uppercase tracking-wider text-navy">
               Contact
             </h2>
             <ul className="mt-4 space-y-3 text-sm">
               <li>
                 <a
-                  href={`tel:${PHONE_TEL}`}
-                  className="inline-flex items-center gap-2 text-slate-brand/80 hover:text-slate-brand"
+                  href={`tel:${siteConfig.phoneTel}`}
+                  className="inline-flex items-center gap-2 text-navy-muted hover:text-navy"
                 >
-                  <Phone className="h-4 w-4 text-mint" aria-hidden />
-                  {PHONE_DISPLAY}
+                  <Phone className="h-4 w-4 text-teal-dark" aria-hidden />
+                  {siteConfig.phoneDisplay}
                 </a>
               </li>
               <li>
                 <a
-                  href={WHATSAPP_URL}
-                  className="text-slate-brand/80 hover:text-slate-brand"
+                  href={siteConfig.whatsAppUrl}
+                  className="text-navy-muted hover:text-navy"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  WhatsApp: {PHONE_DISPLAY}
+                  WhatsApp: {siteConfig.phoneDisplay}
                 </a>
               </li>
               <li>
                 <a
-                  href={`mailto:${EMAIL}`}
-                  className="inline-flex items-center gap-2 text-slate-brand/80 hover:text-slate-brand"
+                  href={`mailto:${siteConfig.email}`}
+                  className="inline-flex items-center gap-2 text-navy-muted hover:text-navy"
                 >
-                  <Mail className="h-4 w-4 text-mint" aria-hidden />
-                  {EMAIL}
+                  <Mail className="h-4 w-4 text-teal-dark" aria-hidden />
+                  {siteConfig.email}
                 </a>
               </li>
             </ul>
           </div>
         </div>
 
-        <div className="mt-10 border-t border-slate-brand/10 pt-8 text-center text-xs leading-relaxed text-slate-brand/70 sm:text-left">
+        <div className="mt-12 border-t border-navy/8 pt-8 text-xs leading-relaxed text-navy-muted">
           <p>
-            {SITE_NAME} is a trading name of {LEGAL_NAME}, registered in England
-            &amp; Wales, Company No. {COMPANY_NUMBER}
+            {siteConfig.brandName} is a trading name of{" "}
+            {siteConfig.companyLegalName}, registered in England &amp; Wales,
+            Company No. {siteConfig.companyNumber}
           </p>
-          <p className="mt-2">© {year} {SITE_NAME}. All rights reserved.</p>
+          <p className="mt-2">
+            © {year} {siteConfig.brandName}. All rights reserved.
+          </p>
         </div>
       </div>
     </footer>

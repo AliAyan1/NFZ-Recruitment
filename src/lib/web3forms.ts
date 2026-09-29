@@ -11,7 +11,7 @@ export async function submitWeb3Form(
     return {
       ok: false,
       message:
-        "Form is not configured yet. Please email us directly or try again later.",
+        "Our form is not fully set up yet. Please call or email us directly — we would still love to hear from you.",
     };
   }
 

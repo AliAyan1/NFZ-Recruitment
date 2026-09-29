@@ -1,44 +1,43 @@
 import type { Metadata } from "next";
-import { SITE_NAME, SITE_URL } from "./constants";
+import { siteConfig } from "./site-config";
 
 const defaultDescription =
-  "NFZ Recruitment supplies pre-screened, licence-checked van, courier and HGV drivers to UK delivery and logistics companies. Driver recruitment UK — you only pay when they start work.";
+  "RoadWorthy Recruitment supplies pre-screened, licence-checked van and courier drivers to UK delivery companies. Van driver recruitment UK — pay only when they start work.";
 
 export const defaultMetadata: Metadata = {
-  metadataBase: new URL(SITE_URL),
+  metadataBase: new URL(siteConfig.siteUrl),
   title: {
-    default: `${SITE_NAME} | Driver Recruitment UK`,
-    template: `%s | ${SITE_NAME}`,
+    default: `${siteConfig.brandName} | Van Driver Recruitment UK`,
+    template: `%s | ${siteConfig.brandName}`,
   },
   description: defaultDescription,
   keywords: [
-    "driver recruitment UK",
+    "van driver recruitment UK",
     "van driver jobs UK",
-    "HGV driver recruitment",
     "courier driver jobs",
     "delivery driver recruitment",
-    "logistics drivers UK",
+    "Christmas delivery driver jobs",
   ],
   openGraph: {
     type: "website",
     locale: "en_GB",
-    siteName: SITE_NAME,
+    siteName: siteConfig.brandName,
     images: [
       {
-        url: "/nfz-logo.png",
-        width: 1200,
-        height: 630,
-        alt: `${SITE_NAME} logo`,
+        url: "/roadworthy-icon.png",
+        width: 512,
+        height: 512,
+        alt: `${siteConfig.brandName} logo`,
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    images: ["/nfz-logo.png"],
+    images: ["/roadworthy-icon.png"],
   },
   icons: {
-    icon: "/nfz-icon.png",
-    apple: "/nfz-icon.png",
+    icon: "/roadworthy-icon.png",
+    apple: "/roadworthy-icon.png",
   },
 };
 
@@ -50,11 +49,13 @@ export function pageMetadata(
   return {
     title,
     description,
-    alternates: { canonical: path ? `${SITE_URL}${path}` : SITE_URL },
+    alternates: {
+      canonical: path ? `${siteConfig.siteUrl}${path}` : siteConfig.siteUrl,
+    },
     openGraph: {
-      title: `${title} | ${SITE_NAME}`,
+      title: `${title} | ${siteConfig.brandName}`,
       description,
-      url: path ? `${SITE_URL}${path}` : SITE_URL,
+      url: path ? `${siteConfig.siteUrl}${path}` : siteConfig.siteUrl,
     },
   };
 }

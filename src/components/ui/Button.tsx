@@ -5,12 +5,12 @@ type Variant = "primary" | "secondary" | "outline" | "ghost";
 
 const variants: Record<Variant, string> = {
   primary:
-    "bg-mint text-slate-brand hover:bg-mint/90 shadow-soft focus-visible:ring-mint",
+    "bg-brand-gradient text-navy shadow-soft hover:shadow-lift hover:brightness-[1.02] focus-visible:ring-teal-dark",
   secondary:
-    "bg-sky text-slate-brand hover:bg-sky/90 shadow-soft focus-visible:ring-sky",
+    "bg-white text-navy border border-navy/10 shadow-card hover:shadow-soft hover:border-teal/40",
   outline:
-    "border-2 border-mint bg-white text-slate-brand hover:bg-mint/10 focus-visible:ring-mint",
-  ghost: "text-slate-brand hover:bg-slate-brand/5 focus-visible:ring-slate-brand",
+    "border-2 border-teal-dark/40 bg-white text-navy hover:bg-teal/10",
+  ghost: "text-navy hover:bg-navy/5",
 };
 
 type BaseProps = {
@@ -30,7 +30,7 @@ type ButtonAsLink = BaseProps & {
 export function Button(props: ButtonAsButton | ButtonAsLink) {
   const { variant = "primary", className = "", children } = props;
   const base =
-    "inline-flex items-center justify-center gap-2 rounded-2xl px-6 py-3.5 text-base font-semibold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-60";
+    "inline-flex items-center justify-center gap-2 rounded-2xl px-6 py-3.5 text-base font-semibold transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-60";
 
   if ("href" in props && props.href) {
     const { href, external } = props;
@@ -53,10 +53,7 @@ export function Button(props: ButtonAsButton | ButtonAsLink) {
       );
     }
     return (
-      <Link
-        href={href}
-        className={`${base} ${variants[variant]} ${className}`}
-      >
+      <Link href={href} className={`${base} ${variants[variant]} ${className}`}>
         {children}
       </Link>
     );

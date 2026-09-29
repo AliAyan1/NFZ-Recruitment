@@ -7,14 +7,30 @@
     scroll-behavior: smooth;
   }
 
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+
   body {
-    @apply bg-background font-body text-slate-brand antialiased;
+    @apply bg-surface font-body text-navy antialiased;
   }
 
   h1,
   h2,
   h3,
   h4 {
-    @apply font-heading;
+    @apply font-heading text-navy;
+  }
+
+  :focus-visible {
+    @apply outline-none ring-2 ring-teal-dark ring-offset-2 ring-offset-surface;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
   }
 }
